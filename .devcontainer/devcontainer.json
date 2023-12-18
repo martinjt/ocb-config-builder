@@ -1,0 +1,6 @@
+{
+    "name": "Go",
+    "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bullseye",
+    "forwardPorts": [4317,4318],
+    "postCreateCommand": "bash .devcontainer/init.sh"
+  }

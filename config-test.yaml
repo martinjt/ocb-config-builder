@@ -1,0 +1,70 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+
+processors:
+  batch:
+  groupbyattrs/honeycomb_api_key:
+    keys:
+      - app.honeycomb_api_key
+
+
+exporters:
+  otlp:
+    endpoint: "api.honeycomb.io:443"
+    headers:
+      "x-honeycomb-team": "$HONEYCOMB_API_KEY"
+  otlp/attendee_traces:
+    endpoint: "api.honeycomb.io:443"
+    auth:
+      authenticator: headers_setter
+
+  otlp/logs:
+    endpoint: "api.honeycomb.io:443"
+    headers:
+      "x-honeycomb-team": "$HONEYCOMB_API_KEY"
+      "x-honeycomb-dataset": "booth-game-logs"
+  otlp/metrics:
+    endpoint: "api.honeycomb.io:443"
+    headers:
+      "x-honeycomb-team": "$HONEYCOMB_API_KEY"
+      "x-honeycomb-dataset": "booth-game-logs"
+
+
+extensions:
+  health_check:
+  headers_setter:
+    headers:
+      - action: insert
+        key: x-honeycomb-team
+        from_context: app.honeycomb_api_key
+
+connectors:
+  resourceattr_to_context:
+
+service:
+  extensions: [health_check, headers_setter]
+  pipelines:
+    traces/default:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
+
+    traces/attendee_ingest:
+      receivers: [otlp]
+      processors: [groupbyattrs/honeycomb_api_key]
+      exporters: [resourceattr_to_context]
+    traces/attendee_export:
+      receivers: [resourceattr_to_context]
+      processors: [batch]
+      exporters: [otlp/attendee_traces]
+
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp/logs]

@@ -1,0 +1,8 @@
+dist:
+  name: otelcol-custom
+  description: Build for Booth game.
+  version: 0.90.1
+  otelcol_version: 0.90.1
+
+extensions:
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension v0.90.1

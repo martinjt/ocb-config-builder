@@ -1,0 +1,8 @@
+dist:
+  name: otelcol-custom
+  description: Custom distribution of the OpenTelemetry Collector
+  version: 0.90.1
+  otelcol_version: 0.90.1
+extensions:
+- gomod: github.com/open-telemetry/opentelemetry-collector/extensions/health_check
+- gomod: github.com/open-telemetry/opentelemetry-collector/extensions/headers_setter
