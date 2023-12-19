@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -16,8 +17,16 @@ type Metadata struct {
 }
 
 type ComponentMapping struct {
-	GithubUrl        string `yaml:"github_url"`
-	ConfigTypeString string `yaml:"config_type"`
+	GithubUrl string `yaml:"github_url"`
+	Version   string `yaml:"version"`
+}
+
+type ComponentMappingFile struct {
+	Receivers  map[string]ComponentMapping `yaml:"receivers"`
+	Processors map[string]ComponentMapping `yaml:"processors"`
+	Exporters  map[string]ComponentMapping `yaml:"exporters"`
+	Extensions map[string]ComponentMapping `yaml:"extensions"`
+	Connectors map[string]ComponentMapping `yaml:"connectors"`
 }
 
 func main() {
@@ -49,11 +58,11 @@ func main() {
 		panic(err)
 	}
 
-	var receivers []ComponentMapping
-	var processors []ComponentMapping
-	var exporters []ComponentMapping
-	var extensions []ComponentMapping
-	var connectors []ComponentMapping
+	receivers := getCoreReceiverMapping()
+	processors := getCoreProcessorMapping()
+	exporters := getCoreExporterMapping()
+	extensions := make(map[string]ComponentMapping)
+	connectors := make(map[string]ComponentMapping)
 
 	tree.Files().ForEach(func(f *object.File) error {
 		if filepath.Base(f.Name) == "metadata.yaml" {
@@ -68,25 +77,72 @@ func main() {
 			yaml.Unmarshal([]byte(metadataContents), &metadata)
 
 			componentMapping := ComponentMapping{
-				GithubUrl:        "github.com/open-telemetry/opentelemetry-collector-contrib/" + componentType + "/" + componentDir,
-				ConfigTypeString: metadata.ConfigType,
+				GithubUrl: "github.com/open-telemetry/opentelemetry-collector-contrib/" + componentType + "/" + componentDir,
+				Version:   "0.90.1",
 			}
 
 			switch componentType {
-			case "receivers":
-				receivers = append(receivers, componentMapping)
-			case "processors":
-				processors = append(processors, componentMapping)
-			case "exporters":
-				exporters = append(exporters, componentMapping)
-			case "extensions":
-				extensions = append(extensions, componentMapping)
-			case "connectors":
-				connectors = append(connectors, componentMapping)
+			case "receiver":
+				receivers[metadata.ConfigType] = componentMapping
+			case "processor":
+				processors[metadata.ConfigType] = componentMapping
+			case "exporter":
+				exporters[metadata.ConfigType] = componentMapping
+			case "extension":
+				extensions[metadata.ConfigType] = componentMapping
+			case "connector":
+				connectors[metadata.ConfigType] = componentMapping
 			default:
-				panic("Unknown component type: " + componentType)
+				fmt.Println("Unknown component type: " + componentType)
 			}
 		}
 		return nil
 	})
+
+	config := ComponentMappingFile{
+		Receivers:  receivers,
+		Processors: processors,
+		Exporters:  exporters,
+		Extensions: extensions,
+		Connectors: connectors,
+	}
+
+	configBytes, _ := yaml.Marshal(&config)
+
+	os.WriteFile("../src/component_mapping.yaml", configBytes, 0644)
+}
+
+func getCoreProcessorMapping() map[string]ComponentMapping {
+	return map[string]ComponentMapping{
+		"batch": {
+			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/processor/batchprocessor",
+			Version:   "0.90.1",
+		},
+	}
+}
+
+func getCoreExporterMapping() map[string]ComponentMapping {
+	return map[string]ComponentMapping{
+		"logging": {
+			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/exporter/loggingexporter",
+			Version:   "0.90.1",
+		},
+		"otlp": {
+			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/exporter/otlpexporter",
+			Version:   "0.90.1",
+		},
+		"otlphttp": {
+			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/exporter/otlphttpexporter",
+			Version:   "0.90.1",
+		},
+	}
+}
+
+func getCoreReceiverMapping() map[string]ComponentMapping {
+	return map[string]ComponentMapping{
+		"otlp": {
+			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/receiver/otlpreceiver",
+			Version:   "0.90.1",
+		},
+	}
 }

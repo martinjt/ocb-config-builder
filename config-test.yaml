@@ -40,9 +40,6 @@ extensions:
         key: x-honeycomb-team
         from_context: app.honeycomb_api_key
 
-connectors:
-  resourceattr_to_context:
-
 service:
   extensions: [health_check, headers_setter]
   pipelines:

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"os"
 	"slices"
@@ -9,9 +10,21 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+type CollectorConfigFile struct {
+	Receivers  map[string]interface{} `yaml:"receivers"`
+	Processors map[string]interface{} `yaml:"processors"`
+	Exporters  map[string]interface{} `yaml:"exporters"`
+	Extensions map[string]interface{} `yaml:"extensions"`
+	Connectors map[string]interface{} `yaml:"connectors"`
+}
+
 type Config struct {
 	Dist       Dist         `yaml:"dist"`
 	Extensions []ModulePath `yaml:"extensions"`
+	Receivers  []ModulePath `yaml:"receivers"`
+	Processors []ModulePath `yaml:"processors"`
+	Exporters  []ModulePath `yaml:"exporters"`
+	Connectors []ModulePath `yaml:"connectors"`
 }
 
 type Dist struct {
@@ -24,6 +37,22 @@ type Dist struct {
 type ModulePath struct {
 	GoMod string `yaml:"gomod"`
 }
+
+type ComponentMapping struct {
+	GithubUrl string `yaml:"github_url"`
+	Version   string `yaml:"version"`
+}
+
+type ComponentMappingFile struct {
+	Receivers  map[string]ComponentMapping `yaml:"receivers"`
+	Processors map[string]ComponentMapping `yaml:"processors"`
+	Exporters  map[string]ComponentMapping `yaml:"exporters"`
+	Extensions map[string]ComponentMapping `yaml:"extensions"`
+	Connectors map[string]ComponentMapping `yaml:"connectors"`
+}
+
+//go:embed component_mapping.yaml
+var componentMappingFile embed.FS
 
 func main() {
 	if len(os.Args) < 2 {
@@ -38,7 +67,12 @@ func main() {
 		return
 	}
 
-	var data map[string]interface{}
+	componentMappingBytes, _ := componentMappingFile.ReadFile("component_mapping.yaml")
+
+	var componentMapping ComponentMappingFile
+	yaml.Unmarshal(componentMappingBytes, &componentMapping)
+
+	var data CollectorConfigFile
 
 	// Unmarshal the YAML string into the data map
 	yaml.Unmarshal(bytes, &data)
@@ -49,45 +83,20 @@ func main() {
 	var extensions []string
 	var connectors []string
 
-	for k, _ := range data["receivers"].(map[interface{}]interface{}) {
-		receivers = append(receivers, getType(k.(string)))
+	for k := range data.Receivers {
+		receivers = append(receivers, getType(k))
 	}
-	for k, _ := range data["processors"].(map[interface{}]interface{}) {
-		processors = append(processors, getType(k.(string)))
+	for k := range data.Processors {
+		processors = append(processors, getType(k))
 	}
-	for k, _ := range data["exporters"].(map[interface{}]interface{}) {
-		exporters = append(exporters, getType(k.(string)))
+	for k := range data.Exporters {
+		exporters = append(exporters, getType(k))
 	}
-	for k, _ := range data["extensions"].(map[interface{}]interface{}) {
-		extensions = append(extensions, getType(k.(string)))
+	for k := range data.Extensions {
+		extensions = append(extensions, getType(k))
 	}
-	for k, _ := range data["connectors"].(map[interface{}]interface{}) {
-		connectors = append(connectors, getType(k.(string)))
-	}
-
-	fmt.Println("Receivers:")
-	for _, v := range slices.Compact(receivers) {
-		fmt.Println(v)
-	}
-	fmt.Println()
-	fmt.Println("Processors:")
-	for _, v := range slices.Compact(processors) {
-		fmt.Println(v)
-	}
-	fmt.Println()
-	fmt.Println("Exporters:")
-	for _, v := range slices.Compact(exporters) {
-		fmt.Println(v)
-	}
-	fmt.Println()
-	fmt.Println("Extensions:")
-	for _, v := range slices.Compact(extensions) {
-		fmt.Println(v)
-	}
-	fmt.Println()
-	fmt.Println("Connectors:")
-	for _, v := range slices.Compact(connectors) {
-		fmt.Println(v)
+	for k := range data.Connectors {
+		connectors = append(connectors, getType(k))
 	}
 
 	config := Config{}
@@ -97,7 +106,19 @@ func main() {
 	config.Dist.CollectorVersion = "0.90.1"
 
 	for _, v := range slices.Compact(extensions) {
-		config.Extensions = append(config.Extensions, ModulePath{GoMod: asCore("extensions", v)})
+		config.Extensions = append(config.Extensions, ModulePath{GoMod: componentMapping.GetConfigType("extensions", v)})
+	}
+	for _, v := range slices.Compact(receivers) {
+		config.Receivers = append(config.Receivers, ModulePath{GoMod: componentMapping.GetConfigType("receiver", v)})
+	}
+	for _, v := range slices.Compact(processors) {
+		config.Processors = append(config.Processors, ModulePath{GoMod: componentMapping.GetConfigType("processor", v)})
+	}
+	for _, v := range slices.Compact(exporters) {
+		config.Exporters = append(config.Exporters, ModulePath{GoMod: componentMapping.GetConfigType("exporter", v)})
+	}
+	for _, v := range slices.Compact(connectors) {
+		config.Connectors = append(config.Connectors, ModulePath{GoMod: componentMapping.GetConfigType("connector", v)})
 	}
 
 	configBytes, _ := yaml.Marshal(&config)
@@ -109,6 +130,24 @@ func getType(fullname string) string {
 	return strings.Split(fullname, "/")[0]
 }
 
-func asCore(section string, moduleName string) string {
-	return fmt.Sprintf("github.com/open-telemetry/opentelemetry-collector/%v/%v", section, moduleName)
+func (c *ComponentMappingFile) GetConfigType(componentType string, componentTypeName string) string {
+	var component ComponentMapping
+	var found bool = false
+	switch componentType {
+	case "receiver":
+		component, found = c.Receivers[componentTypeName]
+	case "processor":
+		component, found = c.Processors[componentTypeName]
+	case "exporter":
+		component, found = c.Exporters[componentTypeName]
+	case "extensions":
+		component, found = c.Extensions[componentTypeName]
+	case "connector":
+		component, found = c.Connectors[componentTypeName]
+	}
+	if !found {
+		fmt.Printf("Component not found: %v:%v \n", componentType, componentTypeName)
+		return ""
+	}
+	return fmt.Sprintf("%s  v%s", component.GithubUrl, component.Version)
 }
