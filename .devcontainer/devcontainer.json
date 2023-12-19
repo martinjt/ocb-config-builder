@@ -1,6 +1,9 @@
 {
     "name": "Go",
     "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bullseye",
+    "features": {
+      "ghcr.io/devcontainers/features/docker-in-docker:2.7.1": {}
+    },
     "forwardPorts": [4317,4318],
     "postCreateCommand": "bash .devcontainer/init.sh"
   }

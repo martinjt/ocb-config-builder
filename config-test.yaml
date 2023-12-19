@@ -15,10 +15,6 @@ exporters:
     endpoint: "api.honeycomb.io:443"
     headers:
       "x-honeycomb-team": "$HONEYCOMB_API_KEY"
-  otlp/attendee_traces:
-    endpoint: "api.honeycomb.io:443"
-    auth:
-      authenticator: headers_setter
 
   otlp/logs:
     endpoint: "api.honeycomb.io:443"
@@ -47,15 +43,6 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [otlp]
-
-    traces/attendee_ingest:
-      receivers: [otlp]
-      processors: [groupbyattrs/honeycomb_api_key]
-      exporters: [resourceattr_to_context]
-    traces/attendee_export:
-      receivers: [resourceattr_to_context]
-      processors: [batch]
-      exporters: [otlp/attendee_traces]
 
     metrics:
       receivers: [otlp]

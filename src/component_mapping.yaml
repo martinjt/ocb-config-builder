@@ -195,7 +195,7 @@ receivers:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/oracledbreceiver
         version: 0.90.1
     otlp:
-        github_url: github.com/open-telemetry/opentelemetry-collector/receiver/otlpreceiver
+        github_url: go.opentelemetry.io/collector/receiver/otlpreceiver
         version: 0.90.1
     otlpjsonfile:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/otlpjsonfilereceiver
@@ -307,7 +307,7 @@ processors:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
         version: 0.90.1
     batch:
-        github_url: github.com/open-telemetry/opentelemetry-collector/processor/batchprocessor
+        github_url: go.opentelemetry.io/collector/processor/batchprocessor
         version: 0.90.1
     cumulativetodelta:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor
@@ -506,7 +506,7 @@ exporters:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/loadbalancingexporter
         version: 0.90.1
     logging:
-        github_url: github.com/open-telemetry/opentelemetry-collector/exporter/loggingexporter
+        github_url: go.opentelemetry.io/collector/exporter/loggingexporter
         version: 0.90.1
     logicmonitor:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/logicmonitorexporter
@@ -527,10 +527,10 @@ exporters:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/opensearchexporter
         version: 0.90.1
     otlp:
-        github_url: github.com/open-telemetry/opentelemetry-collector/exporter/otlpexporter
+        github_url: go.opentelemetry.io/collector/exporter/otlpexporter
         version: 0.90.1
     otlphttp:
-        github_url: github.com/open-telemetry/opentelemetry-collector/exporter/otlphttpexporter
+        github_url: go.opentelemetry.io/collector/exporter/otlphttpexporter
         version: 0.90.1
     prometheus:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter

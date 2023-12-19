@@ -115,7 +115,7 @@ func main() {
 func getCoreProcessorMapping() map[string]ComponentMapping {
 	return map[string]ComponentMapping{
 		"batch": {
-			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/processor/batchprocessor",
+			GithubUrl: "go.opentelemetry.io/collector/processor/batchprocessor",
 			Version:   "0.90.1",
 		},
 	}
@@ -124,15 +124,15 @@ func getCoreProcessorMapping() map[string]ComponentMapping {
 func getCoreExporterMapping() map[string]ComponentMapping {
 	return map[string]ComponentMapping{
 		"logging": {
-			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/exporter/loggingexporter",
+			GithubUrl: "go.opentelemetry.io/collector/exporter/loggingexporter",
 			Version:   "0.90.1",
 		},
 		"otlp": {
-			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/exporter/otlpexporter",
+			GithubUrl: "go.opentelemetry.io/collector/exporter/otlpexporter",
 			Version:   "0.90.1",
 		},
 		"otlphttp": {
-			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/exporter/otlphttpexporter",
+			GithubUrl: "go.opentelemetry.io/collector/exporter/otlphttpexporter",
 			Version:   "0.90.1",
 		},
 	}
@@ -141,7 +141,7 @@ func getCoreExporterMapping() map[string]ComponentMapping {
 func getCoreReceiverMapping() map[string]ComponentMapping {
 	return map[string]ComponentMapping{
 		"otlp": {
-			GithubUrl: "github.com/open-telemetry/opentelemetry-collector/receiver/otlpreceiver",
+			GithubUrl: "go.opentelemetry.io/collector/receiver/otlpreceiver",
 			Version:   "0.90.1",
 		},
 	}
