@@ -23,12 +23,12 @@ The builder itself takes the names of all the components, and builds an OCB comp
 
 ## Container image
 
-There is an image you can use that means you do not need to know about any of the mappings (currently unpublished, but coming soon).
+There is an image you can use that means you do not need to know about any of the mappings.
 
 A build will look like this
 
 ```dockerfile
-FROM martinjt/simple-collector-builder:0.90.1 as build
+FROM ghcr.io/martinjt/ocb-config-builder:latest as build
 COPY config.yaml /config/config.yaml
 RUN /builder/build-collector.sh /config/config.yaml
 
@@ -37,7 +37,7 @@ COPY --from=build /app/otelcol-custom /
 COPY config.yaml /
 EXPOSE 4317/tcp 4318/tcp 13133/tcp
 
-CMD ["/otelcol-custom", "--config=/config-test.yaml"]
+CMD ["/otelcol-custom", "--config=/config.yaml"]
 ```
 
 This will result in a custom image that has the config file embedded inside, however, there is no reason that you can't mount another config file with the same processors in the same place, or not provide the config file in the runtime image at all (to force it to be mounted later).  
