@@ -1,4 +1,4 @@
-package main
+package collectorconfig
 
 import (
 	"os"
@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-type collectorConfigFile struct {
+type CollectorConfigFile struct {
 	Receivers  map[string]interface{} `yaml:"receivers"`
 	Processors map[string]interface{} `yaml:"processors"`
 	Exporters  map[string]interface{} `yaml:"exporters"`
@@ -16,7 +16,7 @@ type collectorConfigFile struct {
 	Connectors map[string]interface{} `yaml:"connectors"`
 }
 
-type requiredComponents struct {
+type RequiredComponents struct {
 	Receivers  []string
 	Processors []string
 	Exporters  []string
@@ -24,19 +24,19 @@ type requiredComponents struct {
 	Connectors []string
 }
 
-func getRequiredComponentsFromCollectorConfig(filename string) (requiredComponents, error) {
+func GetRequiredComponentsFromCollectorConfig(filename string) (RequiredComponents, error) {
 
 	bytes, err := os.ReadFile(filename)
 	if err != nil {
-		return requiredComponents{}, err
+		return RequiredComponents{}, err
 	}
 
-	var data collectorConfigFile
+	var data CollectorConfigFile
 
 	// Unmarshal the YAML string into the data map
 	yaml.Unmarshal(bytes, &data)
 
-	requiredComponents := requiredComponents{}
+	requiredComponents := RequiredComponents{}
 
 	for k := range data.Receivers {
 		requiredComponents.Receivers = append(requiredComponents.Receivers, getType(k))

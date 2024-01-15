@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/jessevdk/go-flags"
+	"github.com/martinjt/ocb-config-builder/pkg/collectorconfig"
 )
 
 var opts struct {
@@ -14,7 +15,7 @@ var opts struct {
 func main() {
 	flags.Parse(&opts)
 
-	requiredComponents, err := getRequiredComponentsFromCollectorConfig(opts.InputConfig)
+	requiredComponents, err := collectorconfig.GetRequiredComponentsFromCollectorConfig(opts.InputConfig)
 	if err != nil {
 		fmt.Println(err)
 		return

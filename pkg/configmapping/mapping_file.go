@@ -1,11 +1,6 @@
-package main
+package configmapping
 
-import (
-	"embed"
-	"fmt"
-
-	"gopkg.in/yaml.v3"
-)
+import "fmt"
 
 type ComponentMapping struct {
 	GithubUrl string `yaml:"github_url"`
@@ -18,16 +13,6 @@ type ComponentMappingFile struct {
 	Exporters  map[string]ComponentMapping `yaml:"exporters"`
 	Extensions map[string]ComponentMapping `yaml:"extensions"`
 	Connectors map[string]ComponentMapping `yaml:"connectors"`
-}
-
-//go:embed component_mapping.yaml
-var componentMappingFile embed.FS
-
-func getComponentMapping() ComponentMappingFile {
-	componentMappingBytes, _ := componentMappingFile.ReadFile("component_mapping.yaml")
-	var componentMapping ComponentMappingFile
-	yaml.Unmarshal(componentMappingBytes, &componentMapping)
-	return componentMapping
 }
 
 func (c *ComponentMappingFile) GetConfigType(componentType string, componentTypeName string) string {

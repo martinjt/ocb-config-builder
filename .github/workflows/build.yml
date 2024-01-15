@@ -22,10 +22,10 @@ jobs:
           go-version: 1.21
 
       - name: Run mapping generator
-        run: cd mappinggenerator && go run main.go
+        run: go run cmd/mappinggenerator/main.go
 
       - name: Build config generator
-        run: go build -o docker-build/ocbconfigbuilder src/*.go
+        run: go build -o docker-build/ocbconfigbuilder cmd/configgenerator/*.go
 
       - name: Build Docker image
         run: docker build -f docker-build/Dockerfile --tag ghcr.io/${{ github.repository }}:latest docker-build/

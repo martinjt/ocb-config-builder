@@ -1,4 +1,4 @@
-FROM local/simple-collector-builder:0.90.1 as build
+FROM local/simple-collector-builder:0.90.1-0.1 as build
 COPY config-test.yaml /config/config.yaml
 RUN /builder/build-collector.sh /config/config.yaml
 

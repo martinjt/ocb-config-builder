@@ -562,9 +562,6 @@ exporters:
     syslog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/syslogexporter
         version: 0.90.1
-    tanzuobservability:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tanzuobservabilityexporter
-        version: 0.90.1
     tencentcloud_logservice:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tencentcloudlogserviceexporter
         version: 0.90.1

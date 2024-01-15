@@ -3,6 +3,8 @@ package main
 import (
 	"os"
 
+	"github.com/martinjt/ocb-config-builder/pkg/collectorconfig"
+	"github.com/martinjt/ocb-config-builder/pkg/configmapping"
 	"gopkg.in/yaml.v3"
 )
 
@@ -26,7 +28,7 @@ type ModulePath struct {
 	GoMod string `yaml:"gomod"`
 }
 
-func (config *ocbConfig) addComponent(components requiredComponents, componentMapping ComponentMappingFile) {
+func (config *ocbConfig) addComponent(components collectorconfig.RequiredComponents, componentMapping configmapping.ComponentMappingFile) {
 	for _, v := range components.Receivers {
 		config.Receivers = append(config.Receivers, ModulePath{GoMod: componentMapping.GetConfigType("receiver", v)})
 	}

@@ -47,14 +47,13 @@ This will result in a custom image that has the config file embedded inside, how
 To regenerate the mappings
 
 ```shell
-cd mappinggenerator
-go run main.go
+go run cmd/mappinggenerator/*
 ```
 
 To build the configbuilder
 
 ```shell
-go build -o docker-build/ocbconfigbuilder src/*.go
+go build -o docker-build/ocbconfigbuilder cmd/configgenerator/*.go
 ```
 
 To build the container image locally

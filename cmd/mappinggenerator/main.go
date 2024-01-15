@@ -9,24 +9,12 @@ import (
 	git "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/go-git/go-git/v5/storage/memory"
+	"github.com/martinjt/ocb-config-builder/pkg/configmapping"
 	"gopkg.in/yaml.v3"
 )
 
 type Metadata struct {
 	ConfigType string `yaml:"type"`
-}
-
-type ComponentMapping struct {
-	GithubUrl string `yaml:"github_url"`
-	Version   string `yaml:"version"`
-}
-
-type ComponentMappingFile struct {
-	Receivers  map[string]ComponentMapping `yaml:"receivers"`
-	Processors map[string]ComponentMapping `yaml:"processors"`
-	Exporters  map[string]ComponentMapping `yaml:"exporters"`
-	Extensions map[string]ComponentMapping `yaml:"extensions"`
-	Connectors map[string]ComponentMapping `yaml:"connectors"`
 }
 
 func main() {
@@ -61,8 +49,8 @@ func main() {
 	receivers := getCoreReceiverMapping()
 	processors := getCoreProcessorMapping()
 	exporters := getCoreExporterMapping()
-	extensions := make(map[string]ComponentMapping)
-	connectors := make(map[string]ComponentMapping)
+	extensions := make(map[string]configmapping.ComponentMapping)
+	connectors := make(map[string]configmapping.ComponentMapping)
 
 	tree.Files().ForEach(func(f *object.File) error {
 		if filepath.Base(f.Name) == "metadata.yaml" {
@@ -76,7 +64,7 @@ func main() {
 
 			yaml.Unmarshal([]byte(metadataContents), &metadata)
 
-			componentMapping := ComponentMapping{
+			componentMapping := configmapping.ComponentMapping{
 				GithubUrl: "github.com/open-telemetry/opentelemetry-collector-contrib/" + componentType + "/" + componentDir,
 				Version:   "0.90.1",
 			}
@@ -93,13 +81,13 @@ func main() {
 			case "connector":
 				connectors[metadata.ConfigType] = componentMapping
 			default:
-				fmt.Println("Unknown component type: " + componentType)
+				fmt.Println("Unknown component type: " + componentType + "Filename: " + f.Name)
 			}
 		}
 		return nil
 	})
 
-	config := ComponentMappingFile{
+	config := configmapping.ComponentMappingFile{
 		Receivers:  receivers,
 		Processors: processors,
 		Exporters:  exporters,
@@ -109,11 +97,11 @@ func main() {
 
 	configBytes, _ := yaml.Marshal(&config)
 
-	os.WriteFile("../src/component_mapping.yaml", configBytes, 0644)
+	os.WriteFile("cmd/configgenerator/component_mapping.yaml", configBytes, 0644)
 }
 
-func getCoreProcessorMapping() map[string]ComponentMapping {
-	return map[string]ComponentMapping{
+func getCoreProcessorMapping() map[string]configmapping.ComponentMapping {
+	return map[string]configmapping.ComponentMapping{
 		"batch": {
 			GithubUrl: "go.opentelemetry.io/collector/processor/batchprocessor",
 			Version:   "0.90.1",
@@ -121,8 +109,8 @@ func getCoreProcessorMapping() map[string]ComponentMapping {
 	}
 }
 
-func getCoreExporterMapping() map[string]ComponentMapping {
-	return map[string]ComponentMapping{
+func getCoreExporterMapping() map[string]configmapping.ComponentMapping {
+	return map[string]configmapping.ComponentMapping{
 		"logging": {
 			GithubUrl: "go.opentelemetry.io/collector/exporter/loggingexporter",
 			Version:   "0.90.1",
@@ -138,8 +126,8 @@ func getCoreExporterMapping() map[string]ComponentMapping {
 	}
 }
 
-func getCoreReceiverMapping() map[string]ComponentMapping {
-	return map[string]ComponentMapping{
+func getCoreReceiverMapping() map[string]configmapping.ComponentMapping {
+	return map[string]configmapping.ComponentMapping{
 		"otlp": {
 			GithubUrl: "go.opentelemetry.io/collector/receiver/otlpreceiver",
 			Version:   "0.90.1",
