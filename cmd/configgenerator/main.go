@@ -8,12 +8,14 @@ import (
 )
 
 var opts struct {
-	ConfigOutput string `short:"o" long:"output" description:"Output file for the generated config" required:"true"`
-	InputConfig  string `short:"i" long:"input" description:"Input file for the collector config" required:"true"`
+	ConfigOutput string `short:"o" long:"output" description:"Output file for the generated config" required:"true" env:"CONFIG_OUTPUT_LOCATION"`
+	InputConfig  string `short:"i" long:"input" description:"Input file for the collector config" required:"true" env:"CONFIG_INPUT_LOCATION"`
 }
 
 func main() {
-	flags.Parse(&opts)
+	if _, err := flags.Parse(&opts); err != nil {
+		panic(err)
+	}
 
 	requiredComponents, err := collectorconfig.GetRequiredComponentsFromCollectorConfig(opts.InputConfig)
 	if err != nil {

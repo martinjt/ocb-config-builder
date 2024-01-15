@@ -29,8 +29,9 @@ A build will look like this
 
 ```dockerfile
 FROM ghcr.io/martinjt/ocb-config-builder:latest as build
-COPY config.yaml /config/config.yaml
-RUN /builder/build-collector.sh /config/config.yaml
+COPY config-test.yaml /config.yaml
+RUN ocbconfigbuilder
+RUN CGO_ENABLED=0 builder --config=/ocb-config.yaml --output-path=/app
 
 FROM cgr.dev/chainguard/static:latest
 COPY --from=build /app/otelcol-custom /
