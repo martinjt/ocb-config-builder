@@ -67,6 +67,14 @@ The important parts are the `type` attribute, which must match the attribute nam
 
 Additionally, if there are other `metadata.yaml` files in the repo, they must follow this format.
 
+### Git tags
+
+The repository must also have a tag for the component that must be in the format `{path-to-component}/v{version}`. This is the same as the OCB itself since we're using the same methods.
+
+`{path-to-component}` is the directory path from the repository root.
+
+The builder will pull all the tags, and choose the latest version as the one to use for the config.
+
 ### ADDITIONAL_REPOS environment variable
 
 The `ocbconfigbuilder` application looks for a comma separated list of repository url's to search for the metadata. This should work with any git server that allow anonymous authentication and allows http communication.
