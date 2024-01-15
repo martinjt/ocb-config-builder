@@ -1,674 +1,602 @@
 receivers:
     active_directory_ds:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/activedirectorydsreceiver
-        version: 0.90.1
+        version: 0.92.0
     aerospike:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/aerospikereceiver
-        version: 0.90.1
+        version: 0.92.0
     apache:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/apachereceiver
-        version: 0.90.1
+        version: 0.92.0
     apachespark:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/apachesparkreceiver
-        version: 0.90.1
+        version: 0.92.0
     awscloudwatch:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awscloudwatchreceiver
-        version: 0.90.1
+        version: 0.92.0
     awscloudwatchmetrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awscloudwatchmetricsreceiver
-        version: 0.90.1
+        version: 0.92.0
     awscontainerinsightreceiver:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awscontainerinsightreceiver
-        version: 0.90.1
+        version: 0.92.0
     awsecscontainermetrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsecscontainermetricsreceiver
-        version: 0.90.1
+        version: 0.92.0
     awsfirehose:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsfirehosereceiver
-        version: 0.90.1
+        version: 0.92.0
     awsxray:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsxrayreceiver
-        version: 0.90.1
+        version: 0.92.0
     azureblob:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/azureblobreceiver
-        version: 0.90.1
+        version: 0.92.0
     azureeventhub:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/azureeventhubreceiver
-        version: 0.90.1
+        version: 0.92.0
     azuremonitor:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/azuremonitorreceiver
-        version: 0.90.1
+        version: 0.92.0
     bigip:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/bigipreceiver
-        version: 0.90.1
+        version: 0.92.0
     carbon:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/carbonreceiver
-        version: 0.90.1
+        version: 0.92.0
     chrony:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/chronyreceiver
-        version: 0.90.1
+        version: 0.92.0
     cloudflare:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/cloudflarereceiver
-        version: 0.90.1
+        version: 0.92.0
     cloudfoundry:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/cloudfoundryreceiver
-        version: 0.90.1
+        version: 0.92.0
     collectd:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/collectdreceiver
-        version: 0.90.1
+        version: 0.92.0
     couchdb:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/couchdbreceiver
-        version: 0.90.1
+        version: 0.92.0
     datadog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/datadogreceiver
-        version: 0.90.1
+        version: 0.92.0
     docker_stats:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver
-        version: 0.90.1
+        version: 0.92.0
     elasticsearch:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/elasticsearchreceiver
-        version: 0.90.1
+        version: 0.92.0
     expvar:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/expvarreceiver
-        version: 0.90.1
+        version: 0.92.0
     file:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filereceiver
-        version: 0.90.1
+        version: 0.92.0
     filelog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver
-        version: 0.90.1
+        version: 0.92.0
     filestats:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filestatsreceiver
-        version: 0.90.1
+        version: 0.92.0
     flinkmetrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/flinkmetricsreceiver
-        version: 0.90.1
+        version: 0.92.0
     fluentforward:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/fluentforwardreceiver
-        version: 0.90.1
+        version: 0.92.0
     gitprovider:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/gitproviderreceiver
-        version: 0.90.1
+        version: 0.92.0
     googlecloudpubsub:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudpubsubreceiver
-        version: 0.90.1
+        version: 0.92.0
     googlecloudspanner:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudspannerreceiver
-        version: 0.90.1
+        version: 0.92.0
     haproxy:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/haproxyreceiver
-        version: 0.90.1
+        version: 0.92.0
     hostmetrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/cpu:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/disk:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/filesystem:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/load:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/memory:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/network:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/paging:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/process:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
-    hostmetricsreceiver/processes:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-        version: 0.90.1
+        version: 0.92.0
     httpcheck:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/httpcheckreceiver
-        version: 0.90.1
+        version: 0.92.0
     iis:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/iisreceiver
-        version: 0.90.1
+        version: 0.92.0
     influxdb:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/influxdbreceiver
-        version: 0.90.1
+        version: 0.92.0
     jaeger:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver
-        version: 0.90.1
+        version: 0.92.0
     jmx:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jmxreceiver
-        version: 0.90.1
+        version: 0.92.0
     journald:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/journaldreceiver
-        version: 0.90.1
+        version: 0.92.0
     k8s_cluster:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sclusterreceiver
-        version: 0.90.1
+        version: 0.92.0
     k8s_events:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8seventsreceiver
-        version: 0.90.1
+        version: 0.92.0
     k8sobjects:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sobjectsreceiver
-        version: 0.90.1
+        version: 0.92.0
     kafka:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/kafkareceiver
-        version: 0.90.1
+        version: 0.92.0
     kafkametrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/kafkametricsreceiver
-        version: 0.90.1
+        version: 0.92.0
     kubeletstats:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/kubeletstatsreceiver
-        version: 0.90.1
+        version: 0.92.0
     loki:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/lokireceiver
-        version: 0.90.1
+        version: 0.92.0
     memcached:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/memcachedreceiver
-        version: 0.90.1
+        version: 0.92.0
     mongodb:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/mongodbreceiver
-        version: 0.90.1
+        version: 0.92.0
     mongodbatlas:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/mongodbatlasreceiver
-        version: 0.90.1
+        version: 0.92.0
     mysql:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/mysqlreceiver
-        version: 0.90.1
+        version: 0.92.0
     namedpipe:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/namedpipereceiver
-        version: 0.90.1
+        version: 0.92.0
     nginx:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/nginxreceiver
-        version: 0.90.1
+        version: 0.92.0
     nsxt:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/nsxtreceiver
-        version: 0.90.1
+        version: 0.92.0
     opencensus:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/opencensusreceiver
-        version: 0.90.1
+        version: 0.92.0
     oracledb:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/oracledbreceiver
-        version: 0.90.1
+        version: 0.92.0
     otlp:
         github_url: go.opentelemetry.io/collector/receiver/otlpreceiver
-        version: 0.90.1
+        version: 0.92.0
     otlpjsonfile:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/otlpjsonfilereceiver
-        version: 0.90.1
+        version: 0.92.0
     podman_stats:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/podmanreceiver
-        version: 0.90.1
+        version: 0.92.0
     postgresql:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/postgresqlreceiver
-        version: 0.90.1
+        version: 0.92.0
     prometheus:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver
-        version: 0.90.1
+        version: 0.92.0
     prometheus_simple:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/simpleprometheusreceiver
-        version: 0.90.1
+        version: 0.92.0
     pulsar:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/pulsarreceiver
-        version: 0.90.1
+        version: 0.92.0
     purefa:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/purefareceiver
-        version: 0.90.1
+        version: 0.92.0
     purefb:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/purefbreceiver
-        version: 0.90.1
+        version: 0.92.0
     rabbitmq:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/rabbitmqreceiver
-        version: 0.90.1
+        version: 0.92.0
     receiver_creator:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/receivercreator
-        version: 0.90.1
+        version: 0.92.0
     redis:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/redisreceiver
-        version: 0.90.1
+        version: 0.92.0
     riak:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/riakreceiver
-        version: 0.90.1
+        version: 0.92.0
     saphana:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/saphanareceiver
-        version: 0.90.1
+        version: 0.92.0
     sapm:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sapmreceiver
-        version: 0.90.1
+        version: 0.92.0
     signalfx:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/signalfxreceiver
-        version: 0.90.1
+        version: 0.92.0
     skywalking:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/skywalkingreceiver
-        version: 0.90.1
+        version: 0.92.0
     snmp:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver
-        version: 0.90.1
+        version: 0.92.0
     snowflake:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snowflakereceiver
-        version: 0.90.1
+        version: 0.92.0
     solace:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/solacereceiver
-        version: 0.90.1
+        version: 0.92.0
     splunk_hec:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkhecreceiver
-        version: 0.90.1
+        version: 0.92.0
     splunkenterprise:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkenterprisereceiver
-        version: 0.90.1
+        version: 0.92.0
     sqlquery:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlqueryreceiver
-        version: 0.90.1
+        version: 0.92.0
     sqlserver:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlserverreceiver
-        version: 0.90.1
+        version: 0.92.0
     sshcheck:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sshcheckreceiver
-        version: 0.90.1
+        version: 0.92.0
     statsd:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/statsdreceiver
-        version: 0.90.1
+        version: 0.92.0
     syslog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/syslogreceiver
-        version: 0.90.1
+        version: 0.92.0
     tcplog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/tcplogreceiver
-        version: 0.90.1
+        version: 0.92.0
     udplog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/udplogreceiver
-        version: 0.90.1
+        version: 0.92.0
     vcenter:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/vcenterreceiver
-        version: 0.90.1
+        version: 0.92.0
     wavefront:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/wavefrontreceiver
-        version: 0.90.1
+        version: 0.92.0
     webhookevent:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/webhookeventreceiver
-        version: 0.90.1
+        version: 0.92.0
     windowseventlog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowseventlogreceiver
-        version: 0.90.1
+        version: 0.92.0
     windowsperfcounters:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowsperfcountersreceiver
-        version: 0.90.1
+        version: 0.92.0
     zipkin:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver
-        version: 0.90.1
+        version: 0.92.0
     zookeeper:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zookeeperreceiver
-        version: 0.90.1
+        version: 0.92.0
 processors:
     attributes:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
-        version: 0.90.1
+        version: 0.92.0
     batch:
         github_url: go.opentelemetry.io/collector/processor/batchprocessor
-        version: 0.90.1
+        version: 0.92.0
     cumulativetodelta:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor
-        version: 0.90.1
+        version: 0.92.0
     datadog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor
-        version: 0.90.1
+        version: 0.92.0
     deltatorate:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatorateprocessor
-        version: 0.90.1
+        version: 0.92.0
     experimental_metricsgeneration:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/metricsgenerationprocessor
-        version: 0.90.1
+        version: 0.92.0
     filter:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor
-        version: 0.90.1
+        version: 0.92.0
     groupbyattrs:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/groupbyattrsprocessor
-        version: 0.90.1
+        version: 0.92.0
     groupbytrace:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/groupbytraceprocessor
-        version: 0.90.1
+        version: 0.92.0
     k8sattributes:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor
-        version: 0.90.1
+        version: 0.92.0
     logstransform:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/logstransformprocessor
-        version: 0.90.1
+        version: 0.92.0
     metricstransform:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/metricstransformprocessor
-        version: 0.90.1
+        version: 0.92.0
     probabilistic_sampler:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/probabilisticsamplerprocessor
-        version: 0.90.1
+        version: 0.92.0
     redaction:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/redactionprocessor
-        version: 0.90.1
+        version: 0.92.0
     remotetap:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/remotetapprocessor
-        version: 0.90.1
+        version: 0.92.0
     resource:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor
-        version: 0.90.1
+        version: 0.92.0
     resourcedetection:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/aks:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/azure:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/consul:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/docker:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/ec2:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/ecs:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/eks:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/elastic_beanstalk:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/gcp:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/heroku:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/k8snode:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/lambda:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/openshift:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
-    resourcedetectionprocessor/system:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-        version: 0.90.1
+        version: 0.92.0
     routing:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/routingprocessor
-        version: 0.90.1
+        version: 0.92.0
     schema:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/schemaprocessor
-        version: 0.90.1
+        version: 0.92.0
     servicegraph:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/servicegraphprocessor
-        version: 0.90.1
+        version: 0.92.0
     span:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/spanprocessor
-        version: 0.90.1
+        version: 0.92.0
     spanmetrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/spanmetricsprocessor
-        version: 0.90.1
+        version: 0.92.0
     sumologic:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/sumologicprocessor
-        version: 0.90.1
+        version: 0.92.0
     tail_sampling:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor
-        version: 0.90.1
+        version: 0.92.0
     transform:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor
-        version: 0.90.1
+        version: 0.92.0
 exporters:
     alertmanager:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alertmanagerexporter
-        version: 0.90.1
+        version: 0.92.0
     alibabacloud_logservice:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alibabacloudlogserviceexporter
-        version: 0.90.1
+        version: 0.92.0
     awscloudwatchlogs:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awscloudwatchlogsexporter
-        version: 0.90.1
+        version: 0.92.0
     awsemf:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsemfexporter
-        version: 0.90.1
+        version: 0.92.0
     awskinesis:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awskinesisexporter
-        version: 0.90.1
+        version: 0.92.0
     awss3:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awss3exporter
-        version: 0.90.1
+        version: 0.92.0
     awsxray:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsxrayexporter
-        version: 0.90.1
+        version: 0.92.0
     azuredataexplorer:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuredataexplorerexporter
-        version: 0.90.1
+        version: 0.92.0
     azuremonitor:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuremonitorexporter
-        version: 0.90.1
+        version: 0.92.0
     carbon:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/carbonexporter
-        version: 0.90.1
+        version: 0.92.0
     cassandra:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/cassandraexporter
-        version: 0.90.1
+        version: 0.92.0
     clickhouse:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexporter
-        version: 0.90.1
+        version: 0.92.0
     coralogix:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/coralogixexporter
-        version: 0.90.1
+        version: 0.92.0
     datadog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter
-        version: 0.90.1
+        version: 0.92.0
     dataset:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datasetexporter
-        version: 0.90.1
+        version: 0.92.0
     dynatrace:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/dynatraceexporter
-        version: 0.90.1
+        version: 0.92.0
     elasticsearch:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter
-        version: 0.90.1
+        version: 0.92.0
     f5cloud:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/f5cloudexporter
-        version: 0.90.1
+        version: 0.92.0
     file:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter
-        version: 0.90.1
+        version: 0.92.0
     googlecloud:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/googlecloudexporter
-        version: 0.90.1
+        version: 0.92.0
     googlecloudpubsub:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/googlecloudpubsubexporter
-        version: 0.90.1
+        version: 0.92.0
     googlemanagedprometheus:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/googlemanagedprometheusexporter
-        version: 0.90.1
+        version: 0.92.0
     honeycombmarker:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/honeycombmarkerexporter
-        version: 0.90.1
+        version: 0.92.0
     influxdb:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/influxdbexporter
-        version: 0.90.1
+        version: 0.92.0
     instana:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/instanaexporter
-        version: 0.90.1
+        version: 0.92.0
     kafka:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter
-        version: 0.90.1
+        version: 0.92.0
     kinetica:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kineticaexporter
-        version: 0.90.1
+        version: 0.92.0
     loadbalancing:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/loadbalancingexporter
-        version: 0.90.1
+        version: 0.92.0
     logging:
         github_url: go.opentelemetry.io/collector/exporter/loggingexporter
-        version: 0.90.1
+        version: 0.92.0
     logicmonitor:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/logicmonitorexporter
-        version: 0.90.1
+        version: 0.92.0
     logzio:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/logzioexporter
-        version: 0.90.1
+        version: 0.92.0
     loki:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/lokiexporter
-        version: 0.90.1
+        version: 0.92.0
     mezmo:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/mezmoexporter
-        version: 0.90.1
+        version: 0.92.0
     opencensus:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/opencensusexporter
-        version: 0.90.1
+        version: 0.92.0
     opensearch:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/opensearchexporter
-        version: 0.90.1
+        version: 0.92.0
     otlp:
         github_url: go.opentelemetry.io/collector/exporter/otlpexporter
-        version: 0.90.1
+        version: 0.92.0
     otlphttp:
         github_url: go.opentelemetry.io/collector/exporter/otlphttpexporter
-        version: 0.90.1
+        version: 0.92.0
     prometheus:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter
-        version: 0.90.1
+        version: 0.92.0
     prometheusremotewrite:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusremotewriteexporter
-        version: 0.90.1
+        version: 0.92.0
     pulsar:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/pulsarexporter
-        version: 0.90.1
+        version: 0.92.0
     sapm:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/sapmexporter
-        version: 0.90.1
+        version: 0.92.0
     sentry:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/sentryexporter
-        version: 0.90.1
+        version: 0.92.0
     signalfx:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/signalfxexporter
-        version: 0.90.1
+        version: 0.92.0
     skywalking:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/skywalkingexporter
-        version: 0.90.1
+        version: 0.92.0
     splunk_hec:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/splunkhecexporter
-        version: 0.90.1
+        version: 0.92.0
     sumologic:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/sumologicexporter
-        version: 0.90.1
+        version: 0.92.0
     syslog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/syslogexporter
-        version: 0.90.1
+        version: 0.92.0
     tencentcloud_logservice:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tencentcloudlogserviceexporter
-        version: 0.90.1
+        version: 0.92.0
     zipkin:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter
-        version: 0.90.1
+        version: 0.92.0
 extensions:
-    "":
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage
-        version: 0.90.1
     asapclient:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/asapauthextension
-        version: 0.90.1
+        version: 0.92.0
     awsproxy:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/awsproxy
-        version: 0.90.1
+        version: 0.92.0
     basicauth:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/basicauthextension
-        version: 0.90.1
+        version: 0.92.0
     bearertokenauth:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/bearertokenauthextension
-        version: 0.90.1
+        version: 0.92.0
     db_storage:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/dbstorage
+        version: 0.92.0
     docker_observer:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/dockerobserver
+        version: 0.92.0
     ecs_observer:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/ecsobserver
+        version: 0.92.0
     ecs_task_observer:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/ecstaskobserver
+        version: 0.92.0
     file_storage:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/filestorage
+        version: 0.92.0
     headers_setter:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension
-        version: 0.90.1
+        version: 0.92.0
     health_check:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension
-        version: 0.90.1
+        version: 0.92.0
     host_observer:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/hostobserver
+        version: 0.92.0
     http_forwarder:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/httpforwarder
-        version: 0.90.1
+        version: 0.92.0
     jaeger_encoding:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/jaegerencodingextension
+        version: 0.92.0
     jaegerremotesampling:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/jaegerremotesampling
-        version: 0.90.1
+        version: 0.92.0
     json_log_encoding:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/jsonlogencodingextension
+        version: 0.92.0
     k8s_observer:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/k8sobserver
+        version: 0.92.0
     oauth2client:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/oauth2clientauthextension
-        version: 0.90.1
+        version: 0.92.0
     oidc:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/oidcauthextension
-        version: 0.90.1
+        version: 0.92.0
     opamp:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension
-        version: 0.90.1
+        version: 0.92.0
     otlp_encoding:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/otlpencodingextension
+        version: 0.92.0
     pprof:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension
-        version: 0.90.1
+        version: 0.92.0
     remotetap:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/remotetapextension
-        version: 0.90.1
+        version: 0.92.0
     sigv4auth:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/sigv4authextension
-        version: 0.90.1
+        version: 0.92.0
     text_encoding:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/textencodingextension
+        version: 0.92.0
     zipkin_encoding:
-        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding
-        version: 0.90.1
+        github_url: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/zipkinencodingextension
+        version: 0.92.0
 connectors:
     count:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/countconnector
-        version: 0.90.1
+        version: 0.92.0
     datadog:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/datadogconnector
-        version: 0.90.1
+        version: 0.92.0
     exceptions:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/exceptionsconnector
-        version: 0.90.1
+        version: 0.92.0
     failover:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/failoverconnector
-        version: 0.90.1
+        version: 0.92.0
     routing:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/routingconnector
-        version: 0.90.1
+        version: 0.92.0
     servicegraph:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/servicegraphconnector
-        version: 0.90.1
+        version: 0.92.0
     spanmetrics:
         github_url: github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector
-        version: 0.90.1
+        version: 0.92.0

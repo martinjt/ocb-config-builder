@@ -28,22 +28,44 @@ type ModulePath struct {
 	GoMod string `yaml:"gomod"`
 }
 
-func (config *ocbConfig) addComponent(components collectorconfig.RequiredComponents, componentMapping configmapping.ComponentMappingFile) {
+func (config *ocbConfig) addComponent(components collectorconfig.RequiredComponents, componentMapping configmapping.ComponentMappingFile) bool {
+	allFound := true
 	for _, v := range components.Receivers {
-		config.Receivers = append(config.Receivers, ModulePath{GoMod: componentMapping.GetConfigType("receiver", v)})
+		modPath, allFound := componentMapping.GetConfigType("receiver", v)
+		config.Receivers = append(config.Receivers, ModulePath{GoMod: modPath})
+		if !allFound {
+			return false
+		}
 	}
 	for _, v := range components.Processors {
-		config.Processors = append(config.Processors, ModulePath{GoMod: componentMapping.GetConfigType("processor", v)})
+		modPath, allFound := componentMapping.GetConfigType("processor", v)
+		config.Processors = append(config.Processors, ModulePath{GoMod: modPath})
+		if !allFound {
+			return false
+		}
 	}
 	for _, v := range components.Exporters {
-		config.Exporters = append(config.Exporters, ModulePath{GoMod: componentMapping.GetConfigType("exporter", v)})
+		modPath, allFound := componentMapping.GetConfigType("exporter", v)
+		config.Exporters = append(config.Exporters, ModulePath{GoMod: modPath})
+		if !allFound {
+			return false
+		}
 	}
 	for _, v := range components.Extensions {
-		config.Extensions = append(config.Extensions, ModulePath{GoMod: componentMapping.GetConfigType("extensions", v)})
+		modPath, allFound := componentMapping.GetConfigType("extensions", v)
+		config.Extensions = append(config.Extensions, ModulePath{GoMod: modPath})
+		if !allFound {
+			return false
+		}
 	}
 	for _, v := range components.Connectors {
-		config.Connectors = append(config.Connectors, ModulePath{GoMod: componentMapping.GetConfigType("connector", v)})
+		modPath, allFound := componentMapping.GetConfigType("connector", v)
+		config.Connectors = append(config.Connectors, ModulePath{GoMod: modPath})
+		if !allFound {
+			return false
+		}
 	}
+	return allFound
 }
 
 func (config *ocbConfig) writeConfigToFile(filename string) error {

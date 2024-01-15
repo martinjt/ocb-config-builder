@@ -7,7 +7,7 @@ processors:
   batch:
   groupbyattrs/honeycomb_api_key:
     keys:
-      - app.honeycomb_api_key
+      - app.honeycomb_api_key 
 
 exporters:
   otlp:
@@ -26,6 +26,8 @@ exporters:
       "x-honeycomb-team": "$HONEYCOMB_API_KEY"
       "x-honeycomb-dataset": "booth-game-logs"
 
+connectors:
+  resourceattr_to_context:
 
 extensions:
   health_check:

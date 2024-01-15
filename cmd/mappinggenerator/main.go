@@ -1,15 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"path/filepath"
-	"strings"
 
-	git "github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing/object"
-	"github.com/go-git/go-git/v5/storage/memory"
+	"github.com/jessevdk/go-flags"
 	"github.com/martinjt/ocb-config-builder/pkg/configmapping"
+	"github.com/martinjt/ocb-config-builder/pkg/mappinggenerator"
 	"gopkg.in/yaml.v3"
 )
 
@@ -17,120 +13,39 @@ type Metadata struct {
 	ConfigType string `yaml:"type"`
 }
 
+const (
+	CONTRIB_REPO      = "github.com/open-telemetry/opentelemetry-collector-contrib"
+	COLLECTOR_VERSION = "0.92.0"
+)
+
+var opts struct {
+	ContribVersion string `short:"v" long:"version" description:"The version of the contrib repo to generate a mapping file for"`
+	Verbose        bool   `short:"d" long:"debug" description:"Enable debug logging"`
+}
+
 func main() {
 
-	r, err := git.Clone(memory.NewStorage(), nil, &git.CloneOptions{
-		URL:           "https://github.com/open-telemetry/opentelemetry-collector-contrib.git",
-		NoCheckout:    true,
-		ReferenceName: "main",
-		SingleBranch:  true,
-		Depth:         1,
-		Progress:      os.Stdout,
-	})
-	if err != nil {
+	if _, err := flags.Parse(&opts); err != nil {
 		panic(err)
 	}
 
-	headCommit, err := r.Head()
-	if err != nil {
-		panic(err)
+	if opts.ContribVersion == "" {
+		opts.ContribVersion = COLLECTOR_VERSION
 	}
-
-	commit, err := r.CommitObject(headCommit.Hash())
-	if err != nil {
-		panic(err)
-	}
-
-	tree, err := commit.Tree()
-	if err != nil {
-		panic(err)
-	}
-
-	receivers := getCoreReceiverMapping()
-	processors := getCoreProcessorMapping()
-	exporters := getCoreExporterMapping()
-	extensions := make(map[string]configmapping.ComponentMapping)
-	connectors := make(map[string]configmapping.ComponentMapping)
-
-	tree.Files().ForEach(func(f *object.File) error {
-		if filepath.Base(f.Name) == "metadata.yaml" {
-			splitpath := strings.Split(f.Name, "/")
-			componentType := splitpath[0]
-			componentDir := splitpath[1]
-
-			metadata := Metadata{}
-
-			metadataContents, _ := f.Contents()
-
-			yaml.Unmarshal([]byte(metadataContents), &metadata)
-
-			componentMapping := configmapping.ComponentMapping{
-				GithubUrl: "github.com/open-telemetry/opentelemetry-collector-contrib/" + componentType + "/" + componentDir,
-				Version:   "0.90.1",
-			}
-
-			switch componentType {
-			case "receiver":
-				receivers[metadata.ConfigType] = componentMapping
-			case "processor":
-				processors[metadata.ConfigType] = componentMapping
-			case "exporter":
-				exporters[metadata.ConfigType] = componentMapping
-			case "extension":
-				extensions[metadata.ConfigType] = componentMapping
-			case "connector":
-				connectors[metadata.ConfigType] = componentMapping
-			default:
-				fmt.Println("Unknown component type: " + componentType + "Filename: " + f.Name)
-			}
-		}
-		return nil
-	})
 
 	config := configmapping.ComponentMappingFile{
-		Receivers:  receivers,
-		Processors: processors,
-		Exporters:  exporters,
-		Extensions: extensions,
-		Connectors: connectors,
+		Receivers:  getCoreReceiverMapping(COLLECTOR_VERSION),
+		Processors: getCoreProcessorMapping(COLLECTOR_VERSION),
+		Exporters:  getCoreExporterMapping(COLLECTOR_VERSION),
+		Extensions: make(map[string]configmapping.ComponentMapping),
+		Connectors: make(map[string]configmapping.ComponentMapping),
 	}
+
+	contribRepoMappings := mappinggenerator.GenerateMappingFileForRepo(CONTRIB_REPO, opts.ContribVersion, opts.Verbose)
+
+	config.MergeMappingFiles(contribRepoMappings)
 
 	configBytes, _ := yaml.Marshal(&config)
 
 	os.WriteFile("cmd/configgenerator/component_mapping.yaml", configBytes, 0644)
-}
-
-func getCoreProcessorMapping() map[string]configmapping.ComponentMapping {
-	return map[string]configmapping.ComponentMapping{
-		"batch": {
-			GithubUrl: "go.opentelemetry.io/collector/processor/batchprocessor",
-			Version:   "0.90.1",
-		},
-	}
-}
-
-func getCoreExporterMapping() map[string]configmapping.ComponentMapping {
-	return map[string]configmapping.ComponentMapping{
-		"logging": {
-			GithubUrl: "go.opentelemetry.io/collector/exporter/loggingexporter",
-			Version:   "0.90.1",
-		},
-		"otlp": {
-			GithubUrl: "go.opentelemetry.io/collector/exporter/otlpexporter",
-			Version:   "0.90.1",
-		},
-		"otlphttp": {
-			GithubUrl: "go.opentelemetry.io/collector/exporter/otlphttpexporter",
-			Version:   "0.90.1",
-		},
-	}
-}
-
-func getCoreReceiverMapping() map[string]configmapping.ComponentMapping {
-	return map[string]configmapping.ComponentMapping{
-		"otlp": {
-			GithubUrl: "go.opentelemetry.io/collector/receiver/otlpreceiver",
-			Version:   "0.90.1",
-		},
-	}
 }

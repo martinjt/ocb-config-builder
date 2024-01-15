@@ -15,7 +15,7 @@ type ComponentMappingFile struct {
 	Connectors map[string]ComponentMapping `yaml:"connectors"`
 }
 
-func (c *ComponentMappingFile) GetConfigType(componentType string, componentTypeName string) string {
+func (c *ComponentMappingFile) GetConfigType(componentType string, componentTypeName string) (string, bool) {
 	var component ComponentMapping
 	var found bool = false
 	switch componentType {
@@ -32,7 +32,23 @@ func (c *ComponentMappingFile) GetConfigType(componentType string, componentType
 	}
 	if !found {
 		fmt.Printf("Component not found: %v:%v \n", componentType, componentTypeName)
-		return ""
+		return "", false
 	}
-	return fmt.Sprintf("%v v%v", component.GithubUrl, component.Version)
+	return fmt.Sprintf("%v v%v", component.GithubUrl, component.Version), true
+}
+
+func (source ComponentMappingFile) MergeMappingFiles(additionalEntries ComponentMappingFile) ComponentMappingFile {
+	source.Receivers = mergeMap(source.Receivers, additionalEntries.Receivers)
+	source.Processors = mergeMap(source.Processors, additionalEntries.Processors)
+	source.Exporters = mergeMap(source.Exporters, additionalEntries.Exporters)
+	source.Extensions = mergeMap(source.Extensions, additionalEntries.Extensions)
+	source.Connectors = mergeMap(source.Connectors, additionalEntries.Connectors)
+	return source
+}
+
+func mergeMap(source map[string]ComponentMapping, additionalEntries map[string]ComponentMapping) map[string]ComponentMapping {
+	for k, v := range additionalEntries {
+		source[k] = v
+	}
+	return source
 }
