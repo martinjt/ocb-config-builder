@@ -17,6 +17,10 @@ func getCoreExporterMapping(version string) map[string]configmapping.ComponentMa
 			GithubUrl: "go.opentelemetry.io/collector/exporter/loggingexporter",
 			Version:   version,
 		},
+		"debug": {
+			GithubUrl: "go.opentelemetry.io/collector/exporter/debugexporter",
+			Version:   version,
+		},
 		"otlp": {
 			GithubUrl: "go.opentelemetry.io/collector/exporter/otlpexporter",
 			Version:   version,
