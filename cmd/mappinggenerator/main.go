@@ -15,7 +15,7 @@ type Metadata struct {
 
 const (
 	CONTRIB_REPO      = "github.com/open-telemetry/opentelemetry-collector-contrib"
-	COLLECTOR_VERSION = "0.92.0"
+	COLLECTOR_VERSION = "0.95.0"
 )
 
 var opts struct {
