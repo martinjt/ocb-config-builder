@@ -53,6 +53,13 @@ func GetRequiredComponentsFromCollectorConfig(filename string) (RequiredComponen
 	for k := range data.Connectors {
 		requiredComponents.Connectors = append(requiredComponents.Connectors, getType(k))
 	}
+
+	slices.Sort(requiredComponents.Receivers)
+	slices.Sort(requiredComponents.Processors)
+	slices.Sort(requiredComponents.Exporters)
+	slices.Sort(requiredComponents.Extensions)
+	slices.Sort(requiredComponents.Connectors)
+
 	requiredComponents.Receivers = slices.Compact(requiredComponents.Receivers)
 	requiredComponents.Processors = slices.Compact(requiredComponents.Processors)
 	requiredComponents.Exporters = slices.Compact(requiredComponents.Exporters)
