@@ -8,6 +8,10 @@ func getCoreProcessorMapping(version string) map[string]configmapping.ComponentM
 			GithubUrl: "go.opentelemetry.io/collector/processor/batchprocessor",
 			Version:   version,
 		},
+		"memory_limiter": {
+			GithubUrl: "go.opentelemetry.io/collector/processor/memorylimiterprocessor",
+			Version:   version,
+		},
 	}
 }
 
