@@ -37,8 +37,8 @@ func main() {
 		Receivers:  getCoreReceiverMapping(COLLECTOR_VERSION),
 		Processors: getCoreProcessorMapping(COLLECTOR_VERSION),
 		Exporters:  getCoreExporterMapping(COLLECTOR_VERSION),
-		Extensions: make(map[string]configmapping.ComponentMapping),
-		Connectors: make(map[string]configmapping.ComponentMapping),
+		Extensions: getCoreExtensionMapping(COLLECTOR_VERSION),
+		Connectors: getCoreConnectorMapping(COLLECTOR_VERSION),
 	}
 
 	contribRepoMappings := mappinggenerator.GenerateMappingFileForRepo(CONTRIB_REPO, opts.ContribVersion, opts.Verbose)

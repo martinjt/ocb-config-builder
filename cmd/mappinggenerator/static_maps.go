@@ -44,3 +44,29 @@ func getCoreReceiverMapping(version string) map[string]configmapping.ComponentMa
 		},
 	}
 }
+
+func getCoreExtensionMapping(version string) map[string]configmapping.ComponentMapping {
+	return map[string]configmapping.ComponentMapping{
+		"memory_ballast": {
+			GithubUrl: "go.opentelemetry.io/collector/extension/memoryballastextension",
+			Version:   version,
+		},
+		"memory_limiter": {
+			GithubUrl: "go.opentelemetry.io/collector/extension/memorylimiterextension",
+			Version:   version,
+		},
+		"zpages": {
+			GithubUrl: "go.opentelemetry.io/collector/extension/zpagesextension",
+			Version:   version,
+		},
+	}
+}
+
+func getCoreConnectorMapping(version string) map[string]configmapping.ComponentMapping {
+	return map[string]configmapping.ComponentMapping{
+		"forward": {
+			GithubUrl: "go.opentelemetry.io/collector/connector/forwardconnector",
+			Version:   version,
+		},
+	}
+}
