@@ -32,12 +32,9 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: | 
-            type=raw,value=$BUILDER_VERSION-$COLLECTOR_VERSION
-            type=raw,value=$BUILDER_VERSION-latest
+            type=raw,value=${{ steps.release_name.outputs.BUILDER_VERSION }}-${{ steps.release_name.outputs.COLLECTOR_VERSION }}
+            type=raw,value=${{ steps.release_name.outputs.BUILDER_VERSION }}-latest
             type=raw,value=latest
-        env:
-          BUILDER_VERSION: ${{ steps.release_name.outputs.BUILDER_VERSION }}
-          COLLECTOR_VERSION: ${{ steps.release_name.outputs.COLLECTOR_VERSION }}
     
       - name: setup Go
         uses: actions/setup-go@v2
