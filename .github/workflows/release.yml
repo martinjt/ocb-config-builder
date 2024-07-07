@@ -23,8 +23,8 @@ jobs:
       
       - name: debug output for release names
         run: |
-          echo "Collector version: $steps.release_name.outputs.COLLECTOR_VERSION"
-          echo "Builder version: $steps.release_name.outputs.BUILDER_VERSION"
+          echo "Collector version: ${{ steps.release_name.outputs.COLLECTOR_VERSION }}"
+          echo "Builder version: ${{ steps.release_name.outputs.BUILDER_VERSION }}"
 
       # - name: setup Go
       #   uses: actions/setup-go@v2
