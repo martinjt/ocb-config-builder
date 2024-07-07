@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/workflows/release.yml'
 
 jobs:
   build-and-push:
@@ -43,4 +45,4 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: ghcr.io/${{ github.repository }}:nightly
-          push: true
+          push: false
